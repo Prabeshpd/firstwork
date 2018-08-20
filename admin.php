@@ -1,11 +1,11 @@
 <?php
 require_once("init.php"); ?>
+
 <?php
 if(!$session->is_signed_in()){
     redirect("login.php");
 }
 ?>
-
 <?php
 $user = User::find_all();
 ?>
@@ -20,15 +20,22 @@ $user = User::find_all();
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+
     <title>admin</title>
+
+
+
 </head>
 <body>
 <h1>ADMIN PAGE</h1>
-<div>
-    <a href="logout.php">logout</a>
+<div align="center">
+    <a class="btn btn-primary btn-lg" href="logout.php" role="button">logout</a>
 </div>
-<div class="col-md-12">
-    <table class="table table-hover">
+
+<div class="container">
+    <div class="col-md-6 col-xms-4" >
+    <table class="table table-hover table table-bordered"  id="tblExportData" >
         <thead>
         <tr>
             <th>ID</th>
@@ -42,20 +49,32 @@ $user = User::find_all();
         </thead>
         <tbody>
         <?php foreach ($user as $us) : ?>
-        <tr>
-            <td><?php echo $us->user_id ?></td>
-            <td><?php echo $us->first_name ?></td>
-            <td><?php echo $us->last_name ?></td>
-            <td><?php echo $us->email ?></td>
-            <td><?php echo $us->password ?></td>
-            <td><?php echo $us->phone ?></td>
-            <td><?php echo $us->no_of_days ?></td>
-        </tr>
-        <?php endforeach; ?>
-        </tbody>
-    </table>
+<tr>
+    <td><?php echo $us->user_id ?></td>
+    <td><?php echo $us->first_name ?></td>
+    <td><?php echo $us->last_name ?></td>
+    <td><?php echo $us->email ?></td>
+    <td><?php echo $us->password ?></td>
+    <td><?php echo $us->phone ?></td>
+    <td><?php echo $us->no_of_days ?></td>
+</tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+    </div>
 </div>
+<form method="post" action="">
+<div align="center">
+    <button  class="btn btn-success" type ="export_table" name="export_table" value="export_table">Export Table Data To Excel File</button>
+</div>
+</form>
+<?php
+if(isset($_POST['export_table'])){
+redirect("export_table.php");
+}
+?>
+
+
 
 </body>
 </html>
-

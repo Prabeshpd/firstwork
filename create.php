@@ -2,13 +2,19 @@
 ?>
 
 <?php
+
 if (isset($_POST['submit'])){
     $first_name = trim($_POST['first_name']);
     $last_name = trim($_POST['last_name']);
     $email = trim($_POST['email_id']);
     $password = trim($_POST['password']);
     $phone = trim($_POST['phone_no']);
-    $no_of_days = trim($_POST['days']);
+    $day = $_POST['days'];
+    $no_of_days = "";
+    foreach ($day as $number){
+        $no_of_days .= $number . ",";
+    }
+
 
     $user = new User();
     $user->first_name = $first_name;
