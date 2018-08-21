@@ -8,25 +8,17 @@ require_once ("init.php");
 
 $database = new Database();
 $user_api_create = new User();
+$json = '{"first_name":"asd", "last_name":"sdsd", "email":"sds@gmail.com", "password":"676", "phone":"3434","no_of_days":"one"}';
+$data  = json_decode($json);
 
-$data = json_decode(file_get_contents("php::/input"));
 
-
-$user_api_create->user_id = $data->user_id;
 $user_api_create->first_name = $data->first_name;
 $user_api_create->last_name = $data->last_name;
 $user_api_create->email = $data->email;
 $user_api_create->password = $data->password;
+$user_api_create->phone = $data->phone;
 $user_api_create->no_of_days = $data->no_of_days;
+$user_api_create->save();
 
-if($user_api_create->create()){
-  echo '{';
-  echo '"message" : "product ws created"';
-  echo '}';
-}
-else{
-    echo '{';
-    echo '"message" : "unable to create" ';
-    echo '}';
-}
+
 

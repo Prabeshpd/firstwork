@@ -21,26 +21,7 @@ class User extends Db_object {
         $the_result_array = self::find_by_query($sql);
         return !empty($the_result_array) ? array_shift($the_result_array):false;
         }
-    public  function create(){
-        $sql = "INSERT INTO " .self::$db_table . " SET ";
-        $sql .= "user_id=:user_id, first_name=:first_name, last_name=:last_name, email=:email, password=:password, no_of_days=:no_of_days";
-        $resultt = self::find_by_query($sql);
-        $this->user_id = htmlspecialchars(strip_tags($this->user_id));
-        $this->first_name = htmlspecialchars(strip_tags($this->first_name));
-        $this->last_name = htmlspecialchars(strip_tags($this->last_name));
-        $this->email = htmlspecialchars(strip_tags($this->email));
-        $this->password = htmlspecialchars(strip_tags($this->password));
-        $this->phone= htmlspecialchars(strip_tags($this->phone));
-        $this->no_of_days = htmlspecialchars(strip_tags($this->no_of_days));
-        $type =array(":user_id", ":first_name", ":last_name", ":email", ":password", ":phone", ":no_of_days");
-        $params = array($this->user_id, $this->first_name, $this->last_name, $this->email, $this->password, $this->phone, $this->no_of_days);
-        call_user_func_array(array($resultt, "bind_param"), array_merge($type, $params));
-        if($resultt){
-            return true;
-        }else{
-            return false;
-        }
-    }
+
     public function find_user_by_id($user_id){
         $sql = "SELECT * FROM " .self::$db_table . " WHERE ";
         $sql .= "user_id = '{$user_id}' ";
