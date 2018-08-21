@@ -71,11 +71,7 @@ $user = User::find_all();
         <a class="btn btn-primary btn-lg" href="logout.php" role="button">logout</a>
     </div>
 </form>
-<?php
-if(isset($_POST['export_table'])){
-redirect("export_table.php");
-}
-?>
+
 
 
 
