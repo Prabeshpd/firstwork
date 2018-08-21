@@ -51,7 +51,6 @@ body#LoginForm{
     margin: 10px auto 30px;
     max-width: 38%;
     padding: 50px 70px 70px 71px;
-    height: 350px;
 
 }
 .login-form .form-group{
@@ -92,4 +91,38 @@ body#LoginForm{
 }
 .login-form{
     margin-top: 60px;
+}
+@media screen and (max-width:900px){
+    body.login-form .main-div {
+        margin: 0;
+    }
+}
+#offset{
+    margin-right: 250px;
+    margin-left: 250px;
+}
+#form-align{
+    margin-left: 250px;
+}
+@media (max-width:900px){
+    #form-align{
+        margin-left: 0;
+    }
+}
+@media (max-width:900px){
+    .login-form{
+        width: 100%;
+    }
+}
+@media (max-width:900px) {
+    .main-div {
+        max-width: 100%;
+        padding: 0 0 0 0;
+    }
+}
+@media (max-width:900px) {
+    .login-form {
+        padding: 0 0 0 0;
+        margin: 0;
+    }
 }

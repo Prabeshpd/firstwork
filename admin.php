@@ -28,14 +28,12 @@ $user = User::find_all();
 
 </head>
 <body>
-<h1>ADMIN PAGE</h1>
-<div align="center">
-    <a class="btn btn-primary btn-lg" href="logout.php" role="button">logout</a>
-</div>
+<h3 class="pannel">ADMIN PAGE</h3>
+
 
 <div class="container">
-    <div class="col-md-6 col-xms-4" >
-    <table class="table table-hover table table-bordered"  id="tblExportData" >
+    <div id="offset" >
+    <table class="table table-hover"  id="tblExportData" >
         <thead>
         <tr>
             <th>ID</th>
@@ -67,6 +65,11 @@ $user = User::find_all();
 <div align="center">
     <button  class="btn btn-success" type ="export_table" name="export_table" value="export_table">Export Table Data To Excel File</button>
 </div>
+    <br />
+    <br />
+    <div align="center">
+        <a class="btn btn-primary btn-lg" href="logout.php" role="button">logout</a>
+    </div>
 </form>
 <?php
 if(isset($_POST['export_table'])){

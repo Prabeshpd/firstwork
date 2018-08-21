@@ -42,7 +42,6 @@ else{
 
 
 <div class="container">
-    <h1 class="form-heading">Login Form</h1>
     <div class="login-form">
         <div class="main-div">
             <div class="pannel">
