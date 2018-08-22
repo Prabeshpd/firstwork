@@ -1,15 +1,13 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; characterset=UTF-8");
+header("Content-Type: application/json");
 header("Access_Control-Allow-Methods: POST");
-header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 require_once ("init.php");
 
 $database = new Database();
 $user_api_create = new User();
-$json = '{"first_name":"asd", "last_name":"sdsd", "email":"sds@gmail.com", "password":"676", "phone":"3434","no_of_days":"one"}';
-$data  = json_decode($json);
+$data  = json_decode(file_get_contents("php://input"));
 
 
 $user_api_create->first_name = $data->first_name;

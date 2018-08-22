@@ -22,15 +22,11 @@ class User extends Db_object {
         return !empty($the_result_array) ? array_shift($the_result_array):false;
         }
 
-    public function find_user_by_id($user_id){
-        $sql = "SELECT * FROM " .self::$db_table . " WHERE ";
-        $sql .= "user_id = '{$user_id}' ";
-        $res = self::find_by_query($sql);
-        $typ = array("first_name", "last_name", "email", "password", "phone", "no_of_days");
-        $par = array($this->first_name, $this->last_name, $this->email, $this->password, $this->phone, $this->no_of_days);
-        call_user_func_array(array($res,"bind_param"), array_merge($typ,$par));
-    }
 
+    public function find_user_by_id($user_id){
+        $the_result_array = static::find_by_query("SELECT * FROM " .static::$db_table . " WHERE id = $user_id");
+        return $the_result_array;
+    }
 
 
 }
